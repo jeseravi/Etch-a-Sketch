@@ -1,23 +1,42 @@
 body {
     
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    /*max height has to account for 8px worth of borders*/
-    max-height: 408px;
-    max-width: 400px;
+
     
     
     
        
   }
 
-#divContainer {
+#title{
+
+  padding: 100px;
+  text-align: center;
+  font-size:40px;
+  background-color: #92A8D1;
+
+
+}
+
+
+#bigContainer{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /*max height has to account for squareroot(numberofDivs)px worth of borders*/
+  max-height: 416px;
+  max-width: 400px;
+  justify-content:center;
+  /*center the whole thing*/
+  margin:0 auto;
+
+}
+
+.divContainer {
 
     display:flex;
     border: 1px solid blue;  
-    width:100px;
-    height:100px;
+    width:50x;
+    height:50px;
     align-items: center;
     text-align:center;
     justify-content: center;

@@ -9,21 +9,44 @@
 </head>
 <body>
 
+<div id="title">Welcome to my Etch-a-Sketch!!</div>
+
+<div id="bigContainer"></div>
 
 <script>
 
-    let numberofDivs = 16;
+    let numberofDivs = 64;
             
     //Create 16 divs. note that CSS max-height/width will have to be adjusted
     //if numberofDivs changes
     for(i=0;i<numberofDivs; i++){
             
         let divCreation = document.createElement("div");
-        divCreation.setAttribute("id","divContainer");
-        divCreation.innerHTML = "Test Div";
-        document.body.appendChild(divCreation); 
+        divCreation.setAttribute("class","divContainer");
+        divCreation.innerHTML = "";
+        document.getElementById("bigContainer").appendChild(divCreation); 
                       
         }
+
+
+    //add an event listener to each div
+
+    for(i=0;i<numberofDivs;i++){
+
+    let addListener = document.getElementsByClassName("divContainer");
+
+    //add color to what's hovered over
+    addListener[i].addEventListener("mouseover",function(event){
+
+        event.target.style.backgroundColor="purple";
+
+        })
+    
+
+    }
+
+
+    
             
 </script>
             

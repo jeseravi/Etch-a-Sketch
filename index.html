@@ -11,11 +11,14 @@
 
 <div id="title">Welcome to my Etch-a-Sketch!!</div>
 
+
+<div id="topButtons"> </div>
+
 <div id="bigContainer"></div>
 
 <script>
 
-    let numberofDivs = 64;
+    let numberofDivs = 256;
             
     //Create 16 divs. note that CSS max-height/width will have to be adjusted
     //if numberofDivs changes
@@ -38,13 +41,108 @@
     //add color to what's hovered over
     addListener[i].addEventListener("mouseover",function(event){
 
-        event.target.style.backgroundColor="purple";
+        event.target.style.backgroundColor="#88B04B";
 
         })
     
 
     }
+    
+    //add a reset button that sets the color of the the whole grid to white
+    let resetBtn = document.createElement("button");
+    resetBtn.setAttribute("id","resetButtonID");
+    resetBtn.innerHTML = "Reset!";
+    document.getElementById("topButtons").appendChild(resetBtn);
 
+    let resetListener = document.getElementById("resetButtonID");
+    resetListener.addEventListener("click",function(event){
+
+        for(i=0;i<numberofDivs*numberofDivs;i++){
+            
+            let colorReset = document.getElementsByClassName("divContainer");
+            colorReset[i].style.backgroundColor="white";
+        
+
+        }
+
+    })
+ 
+    //add a button that deletes the bigContainer div (basically clearing the grid) 
+    //and allows for a new grid to be made from user input
+    let clearGrid = document.createElement("button");
+    clearGrid.setAttribute("id","clearGridID");
+    clearGrid.innerHTML = "Modify!";
+    document.getElementById("topButtons").appendChild(clearGrid);
+
+    
+    let clearGridListener = document.getElementById("clearGridID");
+    clearGridListener.addEventListener("click",function(event){
+
+        //removes the existing grid
+        let gridRemover = document.getElementById("bigContainer");
+        gridRemover.remove();
+
+        
+
+        //ask user for new dimensions
+        promptedGrid = window.prompt("How big do you want the Etch-a-Sketch to be? Enter a number between 1 and 100!");
+
+        //create a new div bigContainer div
+        let bigContainerCreator = document.createElement("div");
+        bigContainerCreator.setAttribute("id","bigContainer");
+        bigContainerCreator.innerHTML = "";
+        document.body.appendChild(bigContainerCreator); 
+
+        //creates a new grid based on promptedGrid
+        let numberofDivs = promptedGrid*promptedGrid;
+            
+            //Create divs
+            for(i=0;i<numberofDivs; i++){
+                    
+                let divCreation = document.createElement("div");
+                divCreation.setAttribute("class","divContainer");
+                divCreation.innerHTML = "";
+                document.getElementById("bigContainer").appendChild(divCreation); 
+                              
+                }
+
+            //set the size of the grids
+
+            for(i=0;i<numberofDivs;i++){
+
+                let gridSizer = document.getElementsByClassName("divContainer");
+                let dimension = 500 / promptedGrid;
+                
+                gridSizer[i].style.width  = dimension + "px"
+                gridSizer[i].style.height = dimension + "px"
+
+
+            }
+        
+        
+            //add an event listener to each div
+        
+            for(i=0;i<numberofDivs;i++){
+        
+            let addListener = document.getElementsByClassName("divContainer");
+        
+            //add color to what's hovered over
+            addListener[i].addEventListener("mouseover",function(event){
+        
+                event.target.style.backgroundColor="#88B04B";
+        
+                })
+            
+        
+            }
+
+
+    })
+
+    
+
+
+    </script>
 
     
             
